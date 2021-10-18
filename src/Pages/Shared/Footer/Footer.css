@@ -1,0 +1,28 @@
+.footer{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.url{
+    text-decoration: none;
+    color: white;
+}
+footer{
+    background-color: black;
+    color: chartreuse;
+    padding: 3px;
+}
+
+
+@media screen and (max-width: 800px) {
+    
+    .footer{
+       
+        visibility: hidden;
+       
+    } 
+   
+  }
