@@ -1,0 +1,33 @@
+.booking{
+    background: url('https://images.unsplash.com/photo-1494005826588-25b58776edbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+    width: auto;
+    display: flex;
+    height: 400px;
+    justify-content: center; 
+    align-items: center;
+}
+
+
+.title{
+    color: white;
+    font-family:  'Arial Narrow Bold', sans-serif;
+    font-size: 48px;
+}
+
+.button-app{
+    background-color: green;
+    padding: 3%;
+    color: white;
+    border: 1px solid green;
+    border-radius: 20px;
+    font-weight: 700px;
+    font-size: 24px;
+   
+} 
+
+.button-app:hover{
+    background-color: yellow;
+    color: green;
+}
+
+

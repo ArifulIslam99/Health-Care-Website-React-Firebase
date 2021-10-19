@@ -1,28 +1,17 @@
-.footer{
+.footer-all{
+   
     background-color: black;
-    color: white;
-    padding: 10px;
-    justify-content: center;
+    color: gray;
     align-items: center;
+    width: 100%;
+    
+    
 }
-
+.footer{
+    font-size: 15px;
+}
 .url{
     text-decoration: none;
-    color: white;
-}
-footer{
-    background-color: black;
-    color: chartreuse;
-    padding: 3px;
+    color: gray;
 }
 
-
-@media screen and (max-width: 800px) {
-    
-    .footer{
-       
-        visibility: hidden;
-       
-    } 
-   
-  }

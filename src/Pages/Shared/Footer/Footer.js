@@ -5,25 +5,25 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <div>
-            <div className="d-flex footer">
-            <div className="w-25">
-                <h2 style={{fontFamily: 'cursive'}}>Mahmuda Optics</h2>
+        <div className="footer-all w-100 p-3">
+            <div className="footer row ">
+            <div className="col-lg-3 col-xs-12 my-2">
+                <h2 style={{fontFamily: 'cursive'}}>Mahmuda Optikal</h2>
                 <p>A 20 year journey on eye care!</p>
                 
             </div> 
-            <div className="w-25">
-                <p>If you feel dusty on your eyes. Please check up today!</p>
-                <Button variant="warning">Book Appointment</Button>
+            <div className="col-lg-3 col-xs-12 my-4 ">
+                <p>If you feel dusty on your eyes</p>
+                <Link to="/booking"><Button variant="success">Book Appointment</Button></Link>
             </div>
-            <div className="w-25">
+            <div className="col-lg-3 col-xs-12 my-2">
                 <h3>Quick Visit</h3>
                 <p><Link className="url"  to="/home">Home   </Link></p>
                 <p><Link className="url"  to="/about">About </Link></p>
                 
 
             </div> 
-            <div className="w-25">
+            <div className="col-lg-3 col-xs-12 my-2">
                 <h3>Contact Us</h3>
                 <p>admin@mahmudaoptics.com</p>
                 <p>099-8888-77-258</p>
