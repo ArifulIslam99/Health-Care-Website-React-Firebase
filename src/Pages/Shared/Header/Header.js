@@ -25,7 +25,7 @@ const Header = () => {
     <Nav>
        
        {
-         (!user.email) ? <Nav.Link as={Link} to="/login">Login</Nav.Link> : 
+         (!user.displayName) ? <Nav.Link as={Link} to="/login">Login</Nav.Link> : 
          
          <div> <img style={{width:'40px', height:'40px'}} src={user.photoURL} alt="" /> <span className="text-white mx-2">Howdy, {user.displayName}</span>  <Button onClick={logOut}>LogOut</Button></div>
        }
