@@ -6,7 +6,7 @@ import banner3 from '../../../images/banners/3.png'
 
 const Banner = () => {
     return (
-        <Carousel  variant="dark">
+        <Carousel  variant="dark" >
   <Carousel.Item>
     <img
       className="d-block w-100"
@@ -14,8 +14,8 @@ const Banner = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-      {/* <h5>First slide label</h5>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+      <h5>Welcome To Mahmuda Eye Care</h5> 
+      
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -25,8 +25,8 @@ const Banner = () => {
       alt="Second slide"
     />
     <Carousel.Caption>
-      {/* <h5>Second slide label</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+      <h5>We Care Our Patient</h5>
+      
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -36,8 +36,8 @@ const Banner = () => {
       alt="Third slide"
     />
     <Carousel.Caption>
-      {/* <h5>Third slide label</h5>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+       <h5 className="text-white">Always Near on Your Service</h5>
+      
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

@@ -10,7 +10,7 @@ const Benefits = () => {
                 <img src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60' alt="" />
             </div> 
             <div className="col-lg-7">
-            <h2 className="fs-1 text-success fw-bold">Why You Choose us?</h2> 
+            <h2 className="fs-1 text-success fw-bold my-2">Why You Choose us?</h2> 
             <Accordion>
   <Accordion.Item eventKey="0">
     <Accordion.Header>Experience of 20 Years</Accordion.Header>

@@ -8,6 +8,7 @@ import Doctors from './Pages/Doctors/Doctors';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute';
+import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Register/Register';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -48,7 +49,10 @@ function App() {
               </Route>
               <PrivateRoute path="/services/:serviceName">
                  <ServiceDetails></ServiceDetails>
-              </PrivateRoute>
+              </PrivateRoute> 
+              <Route path='*'>
+                 <NotFound></NotFound>
+              </Route>
            </Switch>
            <Footer></Footer>
        </BrowserRouter>

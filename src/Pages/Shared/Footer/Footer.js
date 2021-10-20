@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
         </div>
         <div>
-            <footer>© Copyright 2020 by Mahmuda Optics</footer>
+            <footer>© Copyright 2020 by Mahmuda Eye Care</footer>
         </div>
         </div>
     );
