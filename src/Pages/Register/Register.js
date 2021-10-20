@@ -5,14 +5,14 @@ import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
 
 const Register = () => {
-    const [email,setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    
     const history = useHistory();
     const location = useLocation();
     const uri = location.state?.from || '/home';
 
     const { setUser, fbSignIn, gitSignIn, setIsLoading,googleSignIn,setError, error} = useAuth();
-
+    const [ email ,setEmail] = useState('');
+    const [ password , setPassword] = useState('');
     const emailChange = event =>{
         setEmail(event.target.value)
     }
@@ -22,17 +22,15 @@ const Register = () => {
 
     const auth = getAuth();
 
-    const createUser = event =>{
+    const createUser = () =>{
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
           setUser(result.user)
-          event.preventDefault();
-          history.push('/login')
         })
         .catch((error) => {
            setError(error.message)
-        }).finally(()=>setIsLoading(false));
+        }).finally(history.push('/login'));
     }
     const handleGoogle = ()=>{
         googleSignIn()

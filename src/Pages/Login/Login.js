@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import './Login.css'
 const Login = () => {
-    const {googleSignIn, gitSignIn, fbSignIn, setUser, setIsLoading, setError} = useAuth();
+    const {googleSignIn, gitSignIn, fbSignIn, setUser, setIsLoading, setError, error} = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const auth = getAuth();
@@ -24,11 +24,12 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((result) => {
           setUser(result.user)
+          console.log(result.user)
         })
         .catch((error) => {
-          
-        });
-        setIsLoading(false)
+           setError(error.message)
+        }).finally(history.push(uri))
+        
     }
 
     const history = useHistory();
@@ -73,6 +74,7 @@ const Login = () => {
                     <label className="mx-1" htmlFor="password">Password: </label>
                     <input onBlur={PasswordChange} type="password" name="password" id="password" /> <br /> <br />
                     <input type="submit" value="Sign in" />  <br /> <br />
+                    <h5 className="text-danger"> {error} </h5>
                 </form> 
                 
             </div> 
