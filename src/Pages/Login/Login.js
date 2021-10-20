@@ -25,11 +25,12 @@ const Login = () => {
         .then((result) => {
           setUser(result.user)
           console.log(result.user)
+          
         })
         .catch((error) => {
            setError(error.message)
-        }).finally(history.push(uri))
-        
+        }).finally(()=>setIsLoading(false))
+        history.push(uri)
     }
 
     const history = useHistory();
