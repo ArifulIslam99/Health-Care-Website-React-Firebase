@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import './Login.css'
-const Login = () => {
-    const {googleSignIn, gitSignIn, fbSignIn, setUser, setIsLoading, setError} = useAuth();
-    const [email, setEmail] = useState('');
+const Register = () => {
+    const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const auth = getAuth();
+    const history = useHistory();
+    const location = useLocation();
+    const uri = location.state?.from || '/home';
+
+    const { setUser, fbSignIn, gitSignIn, setIsLoading,googleSignIn,setError, error} = useAuth();
 
     const emailChange = event =>{
         setEmail(event.target.value)
@@ -17,30 +19,26 @@ const Login = () => {
     const PasswordChange = event =>{
         setPassword(event.target.value)
     }
-    
 
-    const signInEmail = () =>{
+    const auth = getAuth();
+
+    const createUser = event =>{
         setIsLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
           setUser(result.user)
+          event.preventDefault();
+          history.push('/login')
         })
         .catch((error) => {
-          
-        });
-        setIsLoading(false)
+           setError(error.message)
+        }).finally(()=>setIsLoading(false));
     }
-
-    const history = useHistory();
-    const location = useLocation();
-    const uri = location.state?.from || '/home';
-
     const handleGoogle = ()=>{
         googleSignIn()
         .then((result)=>{
             setUser(result.user)
             history.push(uri)
-           
         })
         .finally(()=>setIsLoading(false))
     }
@@ -63,34 +61,30 @@ const Login = () => {
         }).finally(()=> setIsLoading(false))
     }
     return (
-        <div className="login-form">
-            <h2 className="my-5 fw-bold fs-2">Please Sign Into Your Account.</h2>
-            <div >
-                <form onSubmit={signInEmail}>
-                    <label className="mx-1" htmlFor="email">Email: </label>
-                    <input onBlur={emailChange} type="email" name="email" id="email" />
-                    <br /> <br />
-                    <label className="mx-1" htmlFor="password">Password: </label>
-                    <input onBlur={PasswordChange} type="password" name="password" id="password" /> <br /> <br />
-                    <input type="submit" value="Sign in" />  <br /> <br />
-                </form> 
+        <div>
+            <h1 className="my-5 fw-bold fs-2">Create Account Here.</h1>
+            <div>
+            <form onSubmit={createUser}>
                 
-            </div> 
-
-            <div className="my-3">
+                <label className="mx-2" htmlFor="email">Email: </label>
+                <input onBlur={emailChange} type="email" name="email" id="email" /> <br /> <br />
+                <label  className="mx-2" htmlFor="password">PassWord: </label>
+                <input onBlur={PasswordChange} type="password" name="password" id="password" /> <br /> <br /> 
+                <h5 className='text-danger'>{error}</h5>
+                
+                <input type="submit" value="Register" /> <br /> <br />
+            </form>
+            </div>
+            <div> 
             <p>Sign in With</p>
             <button onClick={handleGoogle} className="mx-2 btn btn-danger"><i class="fab fa-google"></i></button>
             <button onClick={handleGit} className="btn btn-secondary mx-2"><i class="fab fa-github "></i></button>
             <button onClick={handleFacebook} className="btn btn-info mx-2"><i class="fab fa-facebook"></i></button>
-            </div> 
-             
-             <div>
-             <p>-------------------------</p>
-             <p>New User ? <Link to='/register'>Create a Account</Link> </p>
-              </div>
-            
+            <p>-------------------------</p>
+                <p>Already a user ? <Link to="/login">Login Now</Link></p>
+            </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;

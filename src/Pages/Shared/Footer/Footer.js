@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-all w-100 p-3">
             <div className="footer row ">
             <div className="col-lg-3 col-xs-12 my-2">
-                <h2 style={{fontFamily: 'cursive'}}>Mahmuda Optikal</h2>
+                <h2 style={{fontFamily: 'cursive'}}>Mahmuda Eye Care</h2>
                 <p>A 20 year journey on eye care!</p>
                 
             </div> 

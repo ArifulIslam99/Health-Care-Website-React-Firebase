@@ -1,14 +1,18 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Header.css'
 
+
+
 const Header = () => {
+  const {user, logOut}= useAuth();
     return (
      <>
        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand as={Link} to="/" className="head-icon">Mahmuda Optikal</Navbar.Brand>
+  <Navbar.Brand as={Link} to="/" className="head-icon">Mahmuda Eye Care</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
@@ -19,7 +23,14 @@ const Header = () => {
       
     </Nav>
     <Nav>
-      <Nav.Link as={Link} to="/login">Login</Nav.Link>
+       
+       {
+         (!user.email) ? <Nav.Link as={Link} to="/login">Login</Nav.Link> : 
+         
+         <div> <img style={{width:'40px', height:'40px'}} src={user.photoURL} alt="" /> <span className="text-white mx-2">Howdy, {user.displayName}</span>  <Button onClick={logOut}>LogOut</Button></div>
+       }
+      
+      
       
     
     </Nav>

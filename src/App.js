@@ -1,17 +1,22 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './Contexts/AuthProvider';
 import About from './Pages/About/About';
 import Appointment from './Pages/Appointment/Appointment';
 import Successfull from './Pages/Appointment/Successfull';
 import Doctors from './Pages/Doctors/Doctors';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
+import PrivateRoute from './Pages/Login/PrivateRoute';
+import Register from './Pages/Register/Register';
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
-
 function App() {
+   
   return (
     <div className="App">
+       <AuthProvider>
        <BrowserRouter> 
           <Header></Header>
            <Switch>
@@ -21,9 +26,9 @@ function App() {
               <Route  path="/home">
                  <Home></Home>
               </Route>
-              <Route exact path="/booking">
+              <PrivateRoute exact path="/booking">
                  <Appointment></Appointment>
-              </Route>
+              </PrivateRoute>
               <Route path="/doctors">
                  <Doctors></Doctors>
               </Route>
@@ -34,11 +39,20 @@ function App() {
                  <About></About>
               </Route>
               <Route path="/login">
-                 <Login></Login>
+                 
+                  <Login></Login>
+                
               </Route>
+              <Route path="/register">
+                 <Register></Register>
+              </Route>
+              <PrivateRoute path="/services/:serviceName">
+                 <ServiceDetails></ServiceDetails>
+              </PrivateRoute>
            </Switch>
            <Footer></Footer>
        </BrowserRouter>
+       </AuthProvider>
     </div>
   );
 }
